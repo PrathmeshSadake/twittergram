@@ -1,4 +1,6 @@
 import React from "react";
+import Link from "next/link";
+
 import Avatar from "./Avatar";
 import Dropdown from "./Dropdown";
 
@@ -7,11 +9,16 @@ const Post = () => {
     <div className='p-3 mb-6 shadow-md bg-white'>
       <div className='relative flex items-center justify-between p-3'>
         <div className='flex items-center space-x-2'>
-          <Avatar />
-          <div className='-space-y-0.5'>
-            <h2 className='text-sm font-semibold leading-none'>
+          <Link href='/profile'>
+            <Avatar />
+          </Link>
+          <div className='flex flex-col space-y-0.5'>
+            <Link
+              href='/profile'
+              className='text-sm font-semibold leading-none'
+            >
               Prathmesh Sadake
-            </h2>
+            </Link>
             <span className='inline-block text-xs leading-none text-gray-600'>
               2 hours ago
             </span>
