@@ -31,7 +31,7 @@ function classNames(...classes) {
 const Navigation = () => {
   const router = useRouter();
   return (
-    <nav className='space-y-1 w-full shadow-md' aria-label='Sidebar'>
+    <nav className='space-y-1 w-full shadow-md bg-white' aria-label='Sidebar'>
       {navigation.map((item) => (
         <a
           key={item.name}
