@@ -3,7 +3,7 @@ import Avatar from "./Avatar";
 
 const PostForm = () => {
   return (
-    <div className='p-3 shadow-md'>
+    <div className='p-3 shadow-md bg-white'>
       <form>
         <div class='w-full mb-4 border border-gray-200 rounded-lg bg-gray-50'>
           <div class='flex gap-3 px-4 py-3 bg-white rounded-t-lg'>
