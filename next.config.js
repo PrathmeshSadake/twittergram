@@ -4,13 +4,8 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "lh3.googleusercontent.com",
-      },
-    ],
+    domains: ["lh3.googleusercontent.com", "avatars.githubusercontent.com"],
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
