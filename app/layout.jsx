@@ -1,25 +1,20 @@
-import "./globals.css"
-import Nav from "./Nav"
-import { Roboto } from "@next/font/google"
-import AuthContext from "./auth/AuthContext"
-import QueryWrapper from "./QueryWrapper"
+import "./globals.css";
+import Nav from "./Nav";
+import { Poppins } from "@next/font/google";
+import AuthContext from "./auth/AuthContext";
+import QueryWrapper from "./QueryWrapper";
 
-const roboto = Roboto({
+const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-roboto",
-})
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+});
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.jsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
+    <html lang='en'>
       <head />
       <body
-        className={`mx-4 md:mx-48 xl:mx-96 ${roboto.variable} font-sans bg-gray-200`}
+        className={`mx-4 md:mx-48 xl:mx-96 ${poppins.className} bg-gray-200`}
       >
         <QueryWrapper>
           <AuthContext>
@@ -29,5 +24,5 @@ export default function RootLayout({ children }) {
         </QueryWrapper>
       </body>
     </html>
-  )
+  );
 }
