@@ -1,36 +1,22 @@
 {
-  "name": "fullstack-next",
+  "name": "twittergram",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && prisma generate",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
-    "@next-auth/prisma-adapter": "^1.0.5",
-    "@next/font": "^13.1.2",
-    "@prisma/client": "^4.9.0",
-    "@tanstack/react-query-devtools": "^4.23.0",
-    "axios": "^1.2.5",
-    "follow-redirects": "^1.15.2",
-    "framer-motion": "^8.5.4",
-    "next": "^13.1.6",
-    "next-auth": "^4.18.8",
+    "autoprefixer": "10.4.14",
+    "firebase": "^9.21.0",
+    "next": "13.4.2",
+    "postcss": "8.4.23",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-hot-toast": "^2.4.0",
-    "react-icons": "^4.7.1",
-    "react-query": "^3.39.2"
-  },
-  "devDependencies": {
-    "@types/node": "^18.11.18",
-    "@types/react": "^18.0.27",
-    "autoprefixer": "^10.4.13",
-    "postcss": "^8.4.21",
-    "prisma": "^4.9.0",
-    "tailwindcss": "^3.2.4",
-    "typescript": "^4.9.5"
+    "react-firebase-hooks": "^5.1.1",
+    "react-loader-spinner": "^5.3.4",
+    "tailwindcss": "3.3.2"
   }
 }
