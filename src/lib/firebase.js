@@ -19,9 +19,10 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
+// const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
+const app = initializeApp(firebaseConfig);
 
-export const auth = getAuth(app).setPersistence(browserLocalPersistence);
+export const auth = getAuth(app);
 export const googleAuthProvider = new GoogleAuthProvider();
 export const storage = getStorage(app);
 export const firestore = getFirestore(app);
