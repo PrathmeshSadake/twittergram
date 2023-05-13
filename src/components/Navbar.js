@@ -1,8 +1,9 @@
-import { Fragment, useState } from "react";
+import { Fragment, useContext, useState } from "react";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import Image from "next/image";
+import { UserContext } from "@/lib/context";
 
 const navigation = [];
 
@@ -11,7 +12,7 @@ function classNames(...classes) {
 }
 
 export default function Navbar() {
-  const { user, username } = { user: "", username: "" };
+  const { user, username } = useContext(UserContext);
   return (
     <Disclosure as='nav' className='bg-gray-800'>
       {({ open }) => (

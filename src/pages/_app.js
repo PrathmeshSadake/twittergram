@@ -3,6 +3,8 @@ import { Poppins } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 
 import Navbar from "@/components/Navbar";
+import { UserContext } from "@/lib/context";
+import { useUserData } from "@/lib/hooks";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -10,11 +12,15 @@ const poppins = Poppins({
 });
 
 export default function App({ Component, pageProps }) {
+  const { user, username } = useUserData();
+
   return (
-    <main className={poppins.className}>
-      <Navbar />
-      <Component {...pageProps} />
-      <Toaster />
-    </main>
+    <UserContext.Provider value={{ user, username }}>
+      <main className={poppins.className}>
+        <Navbar />
+        <Component {...pageProps} />
+        <Toaster />
+      </main>
+    </UserContext.Provider>
   );
 }

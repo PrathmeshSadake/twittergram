@@ -1,12 +1,15 @@
+import { UserContext } from "@/lib/context";
 import { auth, googleAuthProvider } from "@/lib/firebase";
-import { signOut } from "firebase/auth";
-import React from "react";
+import { signInWithPopup, signOut } from "firebase/auth";
+import React, { useContext } from "react";
 
 // User signed in and has Username: sign out button
 // User signed in but username missing : Username form
 // User signed out : signin button
 
 const SignIn = () => {
+  const { user, username } = useContext(UserContext);
+
   return (
     <div>
       {user ? (
@@ -37,20 +40,18 @@ const SignInButton = () => {
         // Handle Errors here.
         const errorCode = error.code;
         const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
         // The AuthCredential type that was used.
         const credential = googleAuthProvider.credentialFromError(error);
       });
-  return <div>SignInButton</div>;
+  return <button onClick={signInWithGoogle}>SignInButton</button>;
 };
 
 const SignOutButton = () => {
-  return <div onClick={() => signOut()}>SignOutButton</div>;
+  return <button onClick={() => signOut()}>SignOutButton</button>;
 };
 
 const UsernameForm = () => {
-  return <div>SignOutButton</div>;
+  return <div>Username Form</div>;
 };
 
 export default SignIn;
