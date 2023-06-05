@@ -1,10 +1,12 @@
+import Head from "next/head";
 import type { AppProps } from "next/app";
 import { Poppins } from "next/font/google";
 
-import Layout from "./components/Layout";
+import Layout from "../components/Layout";
+import LoginModal from "@/components/modals/LoginModal";
 
 import "@/styles/globals.css";
-import Head from "next/head";
+import RegisterModal from "@/components/modals/RegisterModal";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -17,6 +19,8 @@ export default function App({ Component, pageProps }: AppProps) {
       <Head>
         <title>twittergram</title>
       </Head>
+      <LoginModal />
+      <RegisterModal />
       <Layout>
         <Component {...pageProps} />
       </Layout>

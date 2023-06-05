@@ -7,6 +7,7 @@ import SidebarLogo from "./SidebarLogo";
 import SidebarTweetButton from "./SidebarTweetButton";
 
 const Sidebar = () => {
+  const currentUser = null;
   const items = [
     {
       icon: BsHouseFill,
@@ -43,14 +44,14 @@ const Sidebar = () => {
               label={item.label}
             />
           ))}
-          <SidebarItem
-            // onClick={() => signOut()}
-            icon={BiLogOut}
-            label='Logout'
-          />
-          {/* {currentUser && (
-            
-          )} */}
+
+          {currentUser && (
+            <SidebarItem
+              // onClick={() => signOut()}
+              icon={BiLogOut}
+              label='Logout'
+            />
+          )}
           <SidebarTweetButton />
         </div>
       </div>
