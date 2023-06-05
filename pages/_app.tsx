@@ -7,6 +7,8 @@ import LoginModal from "@/components/modals/LoginModal";
 
 import "@/styles/globals.css";
 import RegisterModal from "@/components/modals/RegisterModal";
+import { SessionProvider } from "next-auth/react";
+import { Toaster } from "react-hot-toast";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -15,15 +17,18 @@ const poppins = Poppins({
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <main className={poppins.className}>
-      <Head>
-        <title>twittergram</title>
-      </Head>
-      <LoginModal />
-      <RegisterModal />
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </main>
+    <SessionProvider session={pageProps.session}>
+      <main className={poppins.className}>
+        <Head>
+          <title>twittergram</title>
+        </Head>
+        <Toaster />
+        <LoginModal />
+        <RegisterModal />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </main>
+    </SessionProvider>
   );
 }

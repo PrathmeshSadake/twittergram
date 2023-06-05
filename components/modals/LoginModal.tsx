@@ -1,12 +1,17 @@
+import { signIn } from "next-auth/react";
+import { useCallback, useState } from "react";
+import { toast } from "react-hot-toast";
+
 import useLoginModal from "@/hooks/useLoginModal";
-import React, { useCallback, useState } from "react";
+import useRegisterModal from "@/hooks/useRegisterModal";
+
 import Input from "../Input";
 import Modal from "../Modal";
-import useRegisterModal from "@/hooks/useRegisterModal";
 
 const LoginModal = () => {
   const loginModal = useLoginModal();
   const registerModal = useRegisterModal();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -14,13 +19,21 @@ const LoginModal = () => {
   const onSubmit = useCallback(async () => {
     try {
       setIsLoading(true);
+
+      await signIn("credentials", {
+        email,
+        password,
+      });
+
+      toast.success("Logged in");
+
       loginModal.onClose();
     } catch (error) {
-      console.log(error);
+      toast.error("Something went wrong");
     } finally {
       setIsLoading(false);
     }
-  }, [loginModal]);
+  }, [email, password, loginModal]);
 
   const onToggle = useCallback(() => {
     loginModal.onClose();
@@ -54,7 +67,7 @@ const LoginModal = () => {
           className='
             text-white 
             cursor-pointer 
-            hover:text-gray-200
+            hover:underline
           '
         >
           {" "}
