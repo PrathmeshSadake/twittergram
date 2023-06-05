@@ -24,7 +24,6 @@ const SidebarTweetButton = () => {
         className='
         mt-6
         lg:hidden 
-        rounded-full 
         h-14
         w-14
         p-4
@@ -46,7 +45,6 @@ const SidebarTweetButton = () => {
         lg:block 
         px-4
         py-2
-        rounded-full
         bg-sky-500
         hover:bg-opacity-90 
         cursor-pointer
