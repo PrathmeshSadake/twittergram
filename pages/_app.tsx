@@ -4,6 +4,7 @@ import { Poppins } from "next/font/google";
 import Layout from "./components/Layout";
 
 import "@/styles/globals.css";
+import Head from "next/head";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -13,6 +14,9 @@ const poppins = Poppins({
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <main className={poppins.className}>
+      <Head>
+        <title>twittergram</title>
+      </Head>
       <Layout>
         <Component {...pageProps} />
       </Layout>
