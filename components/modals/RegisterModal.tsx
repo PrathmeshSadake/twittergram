@@ -96,7 +96,7 @@ const RegisterModal = () => {
           className='
             text-white 
             cursor-pointer 
-            hover:underline
+            hover:text-gray-200
           '
         >
           {" "}
