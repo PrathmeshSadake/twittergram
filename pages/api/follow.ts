@@ -12,8 +12,7 @@ export default async function handler(
   try {
     const { userId } = req.body;
     const { currentUser } = await serverAuth(req, res);
-    if (userId || typeof userId !== "string") throw new Error("Invalid ID");
-
+    if (!userId || typeof userId !== "string") throw new Error("Invalid ID");
     const user = await prisma.user.findUnique({
       where: {
         id: userId,
@@ -23,12 +22,10 @@ export default async function handler(
     if (!user) throw new Error("Invalid ID");
     let updatedFollowingIds = [...(user.followingIds || [])];
     if (req.method === "POST") {
-      updatedFollowingIds.push(currentUser.id);
+      updatedFollowingIds.push(userId);
     }
     if (req.method === "DELETE") {
-      updatedFollowingIds = updatedFollowingIds.filter(
-        (id) => id !== currentUser.id
-      );
+      updatedFollowingIds = updatedFollowingIds.filter((id) => id !== userId);
     }
 
     const updatedUser = await prisma.user.update({

@@ -9,6 +9,7 @@ import "@/styles/globals.css";
 import RegisterModal from "@/components/modals/RegisterModal";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "react-hot-toast";
+import EditModal from "@/components/modals/EditModal";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -23,6 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <title>twittergram</title>
         </Head>
         <Toaster />
+        <EditModal />
         <LoginModal />
         <RegisterModal />
         <Layout>
