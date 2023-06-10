@@ -1,6 +1,7 @@
-import { prisma } from "@/libs/prismadb";
-import serverAuth from "@/libs/serverAuth";
 import { NextApiRequest, NextApiResponse } from "next";
+
+import serverAuth from "@/libs/serverAuth";
+import prisma from "@/libs/prismadb";
 
 export default async function handler(
   req: NextApiRequest,
@@ -9,12 +10,16 @@ export default async function handler(
   if (req.method !== "PATCH") {
     return res.status(405).end();
   }
+
   try {
     const { currentUser } = await serverAuth(req, res);
+
     const { name, username, bio, profileImage, coverImage } = req.body;
+
     if (!name || !username) {
-      throw new Error(`Missing fields`);
+      throw new Error("Missing fields");
     }
+
     const updatedUser = await prisma.user.update({
       where: {
         id: currentUser.id,
@@ -27,6 +32,7 @@ export default async function handler(
         coverImage,
       },
     });
+
     return res.status(200).json(updatedUser);
   } catch (error) {
     console.log(error);

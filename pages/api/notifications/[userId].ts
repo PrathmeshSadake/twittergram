@@ -11,30 +11,31 @@ export default async function handler(
   }
 
   try {
-    const { postId } = req.query;
+    const { userId } = req.query;
 
-    if (!postId || typeof postId !== "string") {
+    if (!userId || typeof userId !== "string") {
       throw new Error("Invalid ID");
     }
 
-    const post = await prisma.post.findUnique({
+    const notifications = await prisma.notification.findMany({
       where: {
-        id: postId,
+        userId,
       },
-      include: {
-        user: true,
-        comments: {
-          include: {
-            user: true,
-          },
-          orderBy: {
-            createdAt: "desc",
-          },
-        },
+      orderBy: {
+        createdAt: "desc",
       },
     });
 
-    return res.status(200).json(post);
+    await prisma.user.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        hasNotification: false,
+      },
+    });
+
+    return res.status(200).json(notifications);
   } catch (error) {
     console.log(error);
     return res.status(400).end();
