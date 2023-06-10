@@ -29,7 +29,7 @@ export default async function handler(
     if (req.method === "GET") {
       const { userId } = req.query;
 
-      console.log({ userId });
+      // console.log({ userId });
 
       let posts;
 
@@ -61,7 +61,7 @@ export default async function handler(
       return res.status(200).json(posts);
     }
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     return res.status(400).end();
   }
 }
