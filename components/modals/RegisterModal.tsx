@@ -93,7 +93,7 @@ const RegisterModal = () => {
         Already have an account?
         <span
           onClick={onToggle}
-          className='text-white cursor-pointer hover:underline'
+          className='text-white cursor-pointer'
         >
           {" "}
           Sign in
